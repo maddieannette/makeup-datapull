@@ -11,11 +11,15 @@ soup = BeautifulSoup(page.content, 'html.parser')
 
 # find the container for all the variables 
 
-results = soup.find(id='search-prod')
-print(results.prettify())
+product = soup.find_all('div', class_='productQvContainer')
 
-make_up_elems = results.find_all('li', class_= 'productQvCcontainer')
-
-# for make_up_elems in make_up_elems:
-#     make_up_brand = make_up_elems.find('h4', class_ 'brand')
-#     make_up_name = make_up_elems.find('p', class_'name')
+for eachProduct in product: 
+    brand = eachProduct.find('h4', class_='prod-title')
+    price = eachProduct.find('span', class_='regPrice')
+    productType = eachProduct.find('p', class_='prod-desc')
+    if None in (brand, price, productType):
+        continue
+    print(brand.text.strip())
+    print(price.text.strip())
+    print(productType.text.strip())
+    print()
