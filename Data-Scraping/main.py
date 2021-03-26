@@ -10,6 +10,9 @@ import pandas as pd
 firstProduct = 0
 showPerPage = 50
 call = 1
+file = open('alllipsticks.csv', 'wb')
+writer = csv.writer(file)
+writer.writerow(['Brand', 'Price', 'ProductType'])
 keepGoing = True
 while call <= 100 and keepGoing:
     keepGoing = False
@@ -31,8 +34,10 @@ while call <= 100 and keepGoing:
         print(price.text.strip())
         print(productType.text.strip())
         print()
+        writer.writerow([Brand.encode('utf-8').strip(), Price.encode('utf-8').strip(), ProductType.encode('utf-8').strip()])
     firstProduct = firstProduct + showPerPage
         
+file.close()
         
 # allProducts = pd.DataFrame(
 # {
