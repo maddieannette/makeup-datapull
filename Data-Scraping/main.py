@@ -34,7 +34,7 @@ while call <= 100 and keepGoing:
         print(price.text.strip())
         print(productType.text.strip())
         print()
-        writer.writerow([Brand.encode('utf-8').strip(), Price.encode('utf-8').strip(), ProductType.encode('utf-8').strip()])
+        writer.writerow([brand.encode('utf-8').strip(), price.encode('utf-8').strip(), PpoductType.encode('utf-8').strip()])
     firstProduct = firstProduct + showPerPage
         
 file.close()
