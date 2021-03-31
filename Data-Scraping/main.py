@@ -6,8 +6,6 @@ from random import randint
 import numpy as np
 import pandas as pd
 
-
-
 # retrieve data from ulta 
 firstProduct = 0
 showPerPage = 50
@@ -29,12 +27,13 @@ while call <= 100 and keepGoing:
             brand = eachProduct.find('h4', class_='prod-title')
             price = eachProduct.find('span', class_='regPrice')
             productType = eachProduct.find('p', class_='prod-desc')
-            if None in (brand, price, productType):
+            rating = eachProduct.find('label', class_='sr-only')
+            if None in (brand, price, productType, rating):
                 continue
             # print(brand.text.strip())
             # print(price.text.strip())
             # print(productType.text.strip())
             # writer.writerow([thisBrand, thisPrice, thisProductType])
-            writer.writerow([brand.text.strip(), price.text.strip(), productType.text.strip()])
+            writer.writerow([brand.text.strip(), price.text.strip(), productType.text.strip(), rating.text.strip()])
         firstProduct = firstProduct + showPerPage
     
